@@ -1,4 +1,3 @@
 
-export const CLIENT_ID = ;
-export const CLIENT_SECRET = ;
-
+export const CLIENT_ID = "client_id";
+export const CLIENT_SECRET = "client_secret"
