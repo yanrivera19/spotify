@@ -2,12 +2,17 @@ import React, {useState, useEffect} from 'react';
 import {search, CLIENT_ID, CLIENT_SECRET} from '../credentials/spotify';
 import axios from 'axios';
 import SpotifyWebApi from "spotify-web-api-js"
-import SongList from './SongList';
+import TrackList from './TrackList';
+import ArtistList from './ArtistList';
+import SearchForm from './SearchForm';
+import AlbumList from './AlbumList';
 
 const HomePage = () => {
 	const [term, setTerm] = useState('');
 	const [token, setToken] = useState('');
-	const [songs, setSongs] = useState({});
+	const [tracks, setTracks] = useState([]);
+	const [artists, setArtists] = useState([]);
+	const [albums, setAlbums] = useState([]);
 
 	const spotifyApi = new SpotifyWebApi();
 
@@ -30,15 +35,20 @@ const HomePage = () => {
 		getToken()
 	}, []);
 
-	const onSubmit = (event) => {
-		event.preventDefault();
+	console.log(term)
 
+	const onSubmit = formValues => {
+		// event.preventDefault();
+		setTerm(formValues.term);
 		getToken();
 
-		spotifyApi.searchTracks(term).then(
+
+		spotifyApi.search(formValues.term, ['track','album','artist']).then(
 			function (data) {
-		    	console.log(`Search by ${term}`, data.tracks);
-		    	setSongs(data.tracks.items)
+		    	console.log(`Search by ${formValues.term}`, data);
+		    	setTracks(data.tracks.items);
+		    	setArtists(data.artists.items);
+		    	setAlbums(data.albums.items);
 		  	},
 		  	function (err) {
 		    	console.error(err);
@@ -49,16 +59,23 @@ const HomePage = () => {
 	return (
 		<div>
 			<h1>Welcome</h1>
-			<h3>Search a Song:</h3>
 			<div>
-				<form onSubmit={onSubmit}>
-					<input type="text" onChange={e => setTerm(e.target.value)}/>
-					<button>Search</button>
-				</form>
+				<SearchForm onSubmit={onSubmit}/>
+				{/* <form onSubmit={onSubmit}> */}
+				{/* 	<input type="text" onChange={e => setTerm(e.target.value)}/> */}
+				{/* 	<button>Search</button> */}
+				{/* </form> */}
 			</div>
-			<div>
-				<SongList songs={songs} />
+			<div className="ui segment">
+				<TrackList tracks={tracks} term={term}/>
+			</div>		
+			<div className="ui segment" >
+				<ArtistList artists={artists} term={term}/>
 			</div>
+			<div className="ui segment" >
+				<AlbumList albums={albums} term={term}/>
+			</div>
+	
 		</div>
 	)
 }
