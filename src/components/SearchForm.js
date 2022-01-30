@@ -23,7 +23,7 @@ const SearchForm = (props) => {
 		return (			
   			<div className={className} style={{paddingBottom: '50px'}}>
       			<div className="ui action input">
-        			<input {...input} autoFocus={autofocus} className="todo-input" placeholder="Search..." autoComplete="off" style={{fontSize: '20px'}} />
+        			<input {...input} autoFocus={autofocus} className="todo-input" placeholder="Search for songs, artists, or albums" autoComplete="off" style={{fontSize: '20px'}} />
         			<button className="ui compact button green todo-input" style={{fontSize: '17px'}}>Search</button>
         		</div>
         		{renderError(meta)}	
@@ -34,6 +34,17 @@ const SearchForm = (props) => {
   	const onSubmit = (formValues, form) => {
     	props.onSubmit(formValues);
     	form.reset();
+
+    	let term;
+
+    	if (localStorage.getItem("term") === null) {
+    		term = [];
+    	} else {
+    		term = JSON.parse(localStorage.getItem("term"));
+    	}
+
+    	term.splice(0, 1, formValues);
+    	localStorage.setItem("term", JSON.stringify(term));
   	};
  
   	return (
