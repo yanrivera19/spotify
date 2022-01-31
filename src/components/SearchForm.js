@@ -13,7 +13,7 @@ const SearchForm = (props) => {
   	};
  
   	const renderInput = ({ input, meta }) => {
-    	const className = `field ${meta.error && meta.submitFailed ? "error" : ""} todo-form`;
+    	const className = `field ${meta.error && meta.submitFailed ? "error" : ""} term-form`;
     	let autofocus = false;
 
     	if (props.initialValues) {
@@ -21,10 +21,10 @@ const SearchForm = (props) => {
     	};
 
 		return (			
-  			<div className={className} style={{paddingBottom: '50px'}}>
-      			<div className="ui action input">
-        			<input {...input} autoFocus={autofocus} className="todo-input" placeholder="Search for songs, artists, or albums" autoComplete="off" style={{fontSize: '20px'}} />
-        			<button className="ui compact button green todo-input" style={{fontSize: '17px'}}>Search</button>
+  			<div className={className} style={{paddingBottom: '30px'}}>
+      			<div className="ui left icon input term-input">
+      				<i className="search icon"></i>
+        			<input {...input} autoFocus={autofocus} className="term-input" placeholder="Search for songs, artists, or albums" autoComplete="off" style={{fontSize: '17px'}}/>
         		</div>
         		{renderError(meta)}	
   			</div>
@@ -32,10 +32,14 @@ const SearchForm = (props) => {
   	};
  
   	const onSubmit = (formValues, form) => {
-    	props.onSubmit(formValues);
+  		console.log(formValues)
+    	props.onSubmit(formValues.term);
     	form.reset();
 
     	let term;
+    	let track;
+    	let artist;
+    	let album;
 
     	if (localStorage.getItem("term") === null) {
     		term = [];
@@ -43,8 +47,23 @@ const SearchForm = (props) => {
     		term = JSON.parse(localStorage.getItem("term"));
     	}
 
-    	term.splice(0, 1, formValues);
+    	term.splice(0, 1, formValues.term);
     	localStorage.setItem("term", JSON.stringify(term));
+
+    	if (localStorage.getItem("track") === null) {
+    		track = [];
+    	}
+    	localStorage.setItem("track", JSON.stringify(track))
+
+    	if (localStorage.getItem("artist") === null) {
+    		artist = [];
+    	}
+    	localStorage.setItem("artist", JSON.stringify(artist))
+
+    	if (localStorage.getItem("album") === null) {
+    		album = [];
+    	}
+    	localStorage.setItem("album", JSON.stringify(album))
   	};
  
   	return (
@@ -62,7 +81,7 @@ const SearchForm = (props) => {
       		}}
       		render={({ handleSubmit }) => (
         		<form onSubmit={handleSubmit} spellCheck="false" className="ui form error">     			
-          			<Field name="term" component={renderInput}/> 
+          			<Field name="term" type="search" component={renderInput}/> 
         		</form>
       		)}
     	/>

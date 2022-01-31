@@ -1,14 +1,35 @@
-/*.art-hd {
-	display: inline-flex;
-}*/
-
 body{
 	background-color: black;
 	color: whitesmoke;
 }
 
-/*@media only screen and (min-width: 991.98px) {
-	.artist-card, .album-card {
-		height: 169px !important;
+.term-form {
+	margin: auto !important;
+	width: 85%;
+}
+
+.term-input {	
+	border-radius: 50px !important;
+}
+
+.search-home {
+	margin-top: 65px;
+}
+
+.home-title {
+	margin-top: 60px;
+}
+
+.track-item:hover {
+	background-color:black !important
+}
+
+@media only screen and (min-width: 991.98px) {
+	.term-form {
+		width: 50%;
 	}
-}*/
+
+	.term-input {
+		font-size: 15px !important;
+	}
+}

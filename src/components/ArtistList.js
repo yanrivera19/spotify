@@ -12,9 +12,12 @@ const ArtistList = ({artists, term}) => {
 		return (
 			<a className=" card " key={id} href={external_urls.spotify} target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', maxHeight: '280px', backgroundColor: 'black'}}>
 				<div className="image">
-					{images.length === 0 ? "no images" : (
+					{images.length === 0 ? (
+						<img src="https://img.icons8.com/color/344/no-image.png" alt="no-image"/>
+					) : (
 						<img className="artist-img" src={images[0].url}/>
-					)}
+						)
+					}
 				</div>
 				<div className="content">
 					<div className="header" style={{fontSize: '14px', color: 'whiteSmoke'}}>{name}</div>
@@ -40,7 +43,7 @@ const ArtistList = ({artists, term}) => {
 	return (
 		<>
 			<div className="art-hd" style={{paddingBottom: '40px'}} ref={artistListRef}>
-				<button className="ui right floated button" onClick={showMore}>
+				<button className="ui right floated compact button" onClick={showMore}>
 				  {expanded ? "Show less" : "Show more"}
 				</button>
 				<div style={{fontSize: '18px'}}>Artists</div>
@@ -50,7 +53,7 @@ const ArtistList = ({artists, term}) => {
 			</div>
 			{expanded ? (
 				<div style={{paddingBottom: '40px', paddingTop: '20px'}}>
-					<button className="ui right floated button" onClick={showMore} >Show less</button>
+					<button className="ui right floated compact button" onClick={showMore} >Show less</button>
 				</div>
 			) : null}
 		</>

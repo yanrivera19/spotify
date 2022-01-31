@@ -30,9 +30,9 @@ const TrackList = ({tracks, term}) => {
 		};
 
 		return (
-			<a className="item" key={id} href={external_urls.spotify} target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none'}}>
+			<a className="item track-item" key={id} href={external_urls.spotify} target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none'}}>
 				<div className="right floated content">
-					<div className="description" style={{color:'whiteSmoke'}}>{msToMinutesAndSeconds(duration_ms)}</div>
+					<div className="description" style={{color:'whiteSmoke', paddingRight: '15px', paddingTop: '8px'}}>{msToMinutesAndSeconds(duration_ms)}</div>
 				</div>
 				<img className="ui avatar image" src={album.images[0].url}/>
 				<div className="content">
@@ -59,7 +59,7 @@ const TrackList = ({tracks, term}) => {
 	return (
 		<>
 			<div style={{paddingBottom:'20px'}} ref={trackListRef}>		
-				< button className="ui button right floated" onClick={showMore}>
+				< button className="ui button compact right floated" onClick={showMore}>
 				  {expanded ? "Show less" : "Show more"}
 				</button>
 				<div style={{fontSize: '18px'}}>Songs</div>
@@ -69,7 +69,7 @@ const TrackList = ({tracks, term}) => {
 			</div>
 			{expanded ? (
 				<div style={{paddingBottom: '40px'}}>
-					<button className="ui right floated button" onClick={showMore} >Show less</button>
+					<button className="ui right floated compact button" onClick={showMore} >Show less</button>
 				</div>
 			) : null}
 		</>	
