@@ -33,7 +33,7 @@ const HomePage = () => {
 	return (
 		<div>
 			<div style={{marginTop: '130px', textAlign: 'center'}}>
-				<h1 style={{fontSize: '60px'}}>Welcome</h1>
+				<h1 className="home-title" style={{fontSize: '65px'}}>Welcome</h1>
 			</div>			
 			<div className="search-home">
 				<SearchForm initialValues={{term: term}} onSubmit={onSubmit}/>

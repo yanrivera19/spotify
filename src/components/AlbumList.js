@@ -9,18 +9,18 @@ const AlbumList = ({albums, term}) => {
 		const {name, images, external_urls, id, artists} = album;
 		console.log(images)
 		return (
-			<a className="card" key={id} href={external_urls.spotify} target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', maxHeight: '280px', backgroundColor: 'black'}}>
+			<a className="card" key={id} href={external_urls.spotify} target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', backgroundColor: 'black'}}>
 				<div className="image">
-					{images.length === 0 ? (
+					{images.length > 0 ? (
+						<img className="album-img" alt="album" src={images[0].url} style={{maxHeight: '220px'}}/>
+					) : (
 						<img src="https://img.icons8.com/color/344/no-image.png" alt="no-img"/>
-						) : (
-							<img className="album-img" src={images[0].url} alt="album-cover"/>
 						)
 					}
 				</div>
 				<div className="content">
-					<div className="header" style={{fontSize: '14px', color: 'whiteSmoke'}}>{name}</div>
-					<p className="description" style={{fontSize: '13px', color: 'whiteSmoke'}}>{artists[0].name}</p>
+					<div className="header" style={{color: 'whiteSmoke'}}>{name}</div>
+					<p className="description" style={{color: 'whiteSmoke'}}>{artists[0].name}</p>
 				</div>
 			</a>			
 		);
@@ -33,14 +33,14 @@ const AlbumList = ({albums, term}) => {
 		} else {
 			setItemsToShow(5);
 			isExpanded(false)
-			albumListRef.current.scrollIntoView();
+			albumListRef.current.scrollIntoView({behavior: "smooth" });
 		}
 	};
 
 	return (
 		<div >
 			<div className="art-hd" style={{paddingBottom: '40px'}} ref={albumListRef}>
-				<button className="ui right floated compact button" onClick={showMore} style={{fontSize: '13px'}}>
+				<button className="ui right floated compact button" onClick={showMore}>
 				  {expanded ? "SEE LESS" : "SEE MORE"}
 				</button>
 				<div style={{fontSize: '21px', fontWeight: 'bold'}}>Albums</div>
@@ -50,7 +50,7 @@ const AlbumList = ({albums, term}) => {
 			</div>
 			{expanded ? (
 				<div style={{paddingBottom: '40px', paddingTop: '20px'}}>
-					<button className="ui right floated compact button" onClick={showMore} style={{fontSize: '13px'}}>SEE LESS</button>
+					<button className="ui right floated compact button" onClick={showMore}>SEE LESS</button>
 				</div>
 			) : null}
 		</div>

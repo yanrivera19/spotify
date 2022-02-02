@@ -47,11 +47,9 @@ const SearchResults = () => {
 			<div style={{paddingTop: '20px'}}>
 				<SearchForm initialValues={{term: searchTerm}} onSubmit={onSubmit}/>
 			</div>
-			{searchTracks.length === 0 ? (
-				<h3 style={{fontSize: '17px'}}>Sorry, no results were found.</h3>
-			) : (
+			{searchTracks.length > 0 ? (
 				<>
-					<h2 style={{paddingBottom: '20px', textAlign: 'center'}}>Results for <span style={{fontStyle: 'italic'}}>{searchTerm}</span>:</h2>
+					<h2 className="results-header" style={{paddingBottom: '20px', textAlign: 'center'}}>Results for <span style={{fontStyle: 'italic'}}>{searchTerm}</span>:</h2>
 					<div className="ui inverted segment " style={{marginBottom: '30px'}}>
 						<TrackList tracks={searchTracks} term={searchTerm}/>
 					</div>		
@@ -62,6 +60,8 @@ const SearchResults = () => {
 						<AlbumList albums={searchAlbums} term={searchTerm}/>
 					</div>
 				</>
+			) : (
+				<h3 style={{fontSize: '17px'}}>Sorry, no results were found.</h3>
 			)}	
 		</div>
 	);
