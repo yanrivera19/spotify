@@ -4,31 +4,22 @@ import TrackList from './TrackList';
 import ArtistList from './ArtistList';
 import SearchForm from './SearchForm';
 import AlbumList from './AlbumList';
-import {getToken} from './useToken';
-import {useLocation, useParams} from 'react-router-dom';
+import {getToken} from '../token';
 
 const SearchedTerm = () => {
-	// const location = useLocation();
-	// const {tracks, artists, albums, term} = location.state;
-	// // const searchTerm = useParams();
-	// console.log(tracks)
-
 	const [searchTerm, setSearchTerm] = useState('');
-	const [token, setToken] = useState('');
 	const [searchTracks, setSearchTracks] = useState([]);
 	const [searchArtists, setSearchArtists] = useState([]);
 	const [searchAlbums, setSearchAlbums] = useState([]);
-
 	const spotifyApi = new SpotifyWebApi();
 
 	useEffect(() => {
-		// getToken();
-		if(localStorage.getItem("track") !== undefined){
+		getToken();
+		
 		setSearchTerm(JSON.parse(localStorage.getItem("term")));
 		setSearchTracks(JSON.parse(localStorage.getItem("track")));
 		setSearchArtists(JSON.parse(localStorage.getItem("artist")));
 		setSearchAlbums(JSON.parse(localStorage.getItem("album")));
-	}
 	}, []);
 
 	const onSubmit = formValues => {
@@ -51,16 +42,16 @@ const SearchedTerm = () => {
 		);
 	};
 
-	console.log(searchTerm)
-
 	return (
 		<div>
-			<div>
+			<div style={{paddingTop: '20px'}}>
 				<SearchForm initialValues={{term: searchTerm}} onSubmit={onSubmit}/>
 			</div>
-			{searchTracks.length === 0 ? "Sorry, no results were found." : (
+			{searchTracks.length === 0 ? (
+				<h3 style={{fontSize: '17px'}}>Sorry, no results were found.</h3>
+			) : (
 				<>
-					<h3 style={{paddingBottom: '15px'}}>{`Results for ${searchTerm}:`}</h3>
+					<h2 style={{paddingBottom: '20px', textAlign: 'center'}}>Results for <span style={{fontStyle: 'italic'}}>{searchTerm}</span>:</h2>
 					<div className="ui inverted segment " style={{marginBottom: '30px'}}>
 						<TrackList tracks={searchTracks} term={searchTerm}/>
 					</div>		

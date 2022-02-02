@@ -1,5 +1,4 @@
 import React, {useState, useRef} from 'react';
-import {Link} from 'react-router-dom';
 
 const ArtistList = ({artists, term}) => {
 	const [itemsToShow, setItemsToShow] = useState(5);
@@ -13,9 +12,9 @@ const ArtistList = ({artists, term}) => {
 			<a className=" card " key={id} href={external_urls.spotify} target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', maxHeight: '280px', backgroundColor: 'black'}}>
 				<div className="image">
 					{images.length === 0 ? (
-						<img src="https://img.icons8.com/color/344/no-image.png" alt="no-image"/>
+						<img src="https://img.icons8.com/color/344/no-image.png" alt="no-img"/>
 					) : (
-						<img className="artist-img" src={images[0].url}/>
+						<img className="artist-img" alt="artist" src={images[0].url} style={{maxHeight: '220px'}}/>
 						)
 					}
 				</div>
@@ -26,8 +25,6 @@ const ArtistList = ({artists, term}) => {
 			</a>		
 		);
 	});
-
-	console.log(artists)
 
 	const showMore = () => {
 		if (itemsToShow === 5) {
@@ -43,17 +40,17 @@ const ArtistList = ({artists, term}) => {
 	return (
 		<>
 			<div className="art-hd" style={{paddingBottom: '40px'}} ref={artistListRef}>
-				<button className="ui right floated compact button" onClick={showMore}>
-				  {expanded ? "Show less" : "Show more"}
+				<button className="ui right floated compact button" onClick={showMore} style={{fontSize: '13px'}}>
+				  {expanded ? "SEE LESS" : "SEE MORE"}
 				</button>
-				<div style={{fontSize: '18px'}}>Artists</div>
+				<div style={{fontSize: '21px', fontWeight: 'bold'}}>Artists</div>
 			</div>		
 			<div className="ui five doubling cards">
 				{renderArtists}
 			</div>
 			{expanded ? (
 				<div style={{paddingBottom: '40px', paddingTop: '20px'}}>
-					<button className="ui right floated compact button" onClick={showMore} >Show less</button>
+					<button className="ui right floated compact button" onClick={showMore} style={{fontSize: '13px'}}>SEE LESS</button>
 				</div>
 			) : null}
 		</>

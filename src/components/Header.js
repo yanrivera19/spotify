@@ -8,7 +8,7 @@ const Header = () => {
 				<h3 style={{fontSize: '25px'}}><i className="spotify green icon"></i>Spotify</h3>
 			</Link>
 		</div>
-	)
-}
+	);
+};
 
 export default Header;

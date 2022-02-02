@@ -1,4 +1,4 @@
-body{
+body {
 	background-color: black;
 	color: whitesmoke;
 }
@@ -12,8 +12,12 @@ body{
 	border-radius: 50px !important;
 }
 
+.clear-input-label {
+	border-radius: 0px 50px 50px 0px !important;
+}
+
 .search-home {
-	margin-top: 65px;
+	margin-top: 55px;
 }
 
 .home-title {
@@ -26,7 +30,7 @@ body{
 
 @media only screen and (min-width: 991.98px) {
 	.term-form {
-		width: 50%;
+		width: 40% !important;
 	}
 
 	.term-input {
