@@ -24,7 +24,7 @@ body {
 	background-color:black !important
 }
 
-@media only screen and (min-width: 991.98px) {
+@media only screen and (min-width: 992px) {
 	.term-form {
 		width: 35% !important;
 	}
@@ -48,4 +48,83 @@ body {
 	.track-name  {
 		font-size: 18px;
 	}
+
 }
+
+@media only screen and (min-width: 601px) and (max-width: 991px) {
+	.truncated {
+		max-width: 430px;
+	    display: block;
+	    white-space: nowrap; 
+	    overflow: hidden;
+	    text-overflow: ellipsis;
+	}
+}
+
+@media only screen and (min-width: 420px) and (max-width: 600px) {
+	.truncated {
+		max-width: 250px;
+	    display: block;
+	    white-space: nowrap; 
+	    overflow: hidden;
+	    text-overflow: ellipsis;
+	}
+}	
+
+@media only screen and (max-width: 419px) {
+	.term-input {
+		font-size: 15px !important
+	}
+
+	.results-header {
+		font-size: 20px;
+	}
+
+	.songs-header {
+		font-size: 19px !important;
+	}
+
+	.see-btn {
+		font-size: 13px !important
+	}
+
+	.truncated {
+		max-width: 190px;
+	    display: block;
+	    white-space: nowrap;
+	    overflow: hidden;
+	    text-overflow: ellipsis;
+	}
+}
+
+@media only screen and (max-width: 358px) {
+	.truncated {
+		font-size: 13px;
+		max-width: 160px;
+	    display: block;
+	    white-space: nowrap; 
+	    overflow: hidden;
+	    text-overflow: ellipsis;
+	}
+
+	.term-input {
+		font-size: 13px !important
+	}
+
+	.results-header {
+		font-size: 18px;
+	}
+
+	.songs-header, .artist-header, .album-header {
+		font-size: 17px !important;
+	}
+
+	.see-btn, .duration {
+		font-size: 12px !important
+	}
+
+	.description {
+		font-size: 13px;
+	}
+}
+

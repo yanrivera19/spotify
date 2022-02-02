@@ -43,7 +43,7 @@ const AlbumList = ({albums, term}) => {
 				<button className="ui right floated compact button" onClick={showMore}>
 				  {expanded ? "SEE LESS" : "SEE MORE"}
 				</button>
-				<div style={{fontSize: '21px', fontWeight: 'bold'}}>Albums</div>
+				<div className="artist-header" style={{fontSize: '21px', fontWeight: 'bold'}}>Albums</div>
 			</div>		
 			<div className="ui doubling five cards">
 				{renderAlbums}

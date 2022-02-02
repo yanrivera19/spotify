@@ -17,14 +17,16 @@ const TrackList = ({tracks, term}) => {
 
 		return (
 			<a className="item track-item" key={id} href={external_urls.spotify} target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none'}}>
+			
 				<div className="right floated content">
-					<div className="" style={{color:'whiteSmoke', paddingRight: '15px', paddingTop: '8px'}}>{msToMinutesAndSeconds(duration_ms)}</div>
+					<div className="duration" style={{color:'whiteSmoke', paddingRight: '15px', paddingTop: '8px'}}>{msToMinutesAndSeconds(duration_ms)}</div>
 				</div>
 				<img className="ui avatar image" alt="track" src={album.images[0].url}/>
 				<div className="content">
-					<div className="header track-name" style={{color:'whiteSmoke'}}>{name}</div>
+					<div className="header track-name truncated" style={{color:'whiteSmoke'}}>{name}</div>
 					<p className="description" style={{color:'whiteSmoke'}}>{artists[0].name}</p>
 				</div>
+		
 			</a>
 		);
 	});
@@ -48,17 +50,19 @@ const TrackList = ({tracks, term}) => {
 	return (
 		<>
 			<div style={{paddingBottom:'20px'}} ref={trackListRef}>		
-				< button className="ui button compact right floated" onClick={showMoreOrLess}>
+				< button className="ui button compact right floated see-btn" onClick={showMoreOrLess}>
 				  {expanded ? "SEE LESS" : "SEE MORE"}
 				</button>
-				<div style={{fontSize: '21px', fontWeight: 'bold'}}>Songs</div>
+				<div className="songs-header" style={{fontSize: '21px', fontWeight: 'bold'}}>Songs</div>
 			</div>
+			{/* <div className="flex"> */}
 			<div className="ui large divided animated list">
 				{renderTracks}
 			</div>
+			{/* </div> */}
 			{expanded ? (
 				<div style={{paddingBottom: '40px'}}>
-					<button className="ui right floated compact button" onClick={showLess}>SEE LESS</button>
+					<button className="ui right floated compact button see-btn" onClick={showLess}>SEE LESS</button>
 				</div>
 			) : null}
 		</>	
