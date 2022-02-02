@@ -6,7 +6,7 @@ import SearchForm from './SearchForm';
 import AlbumList from './AlbumList';
 import {getToken} from '../token';
 
-const SearchedTerm = () => {
+const SearchResults = () => {
 	const [searchTerm, setSearchTerm] = useState('');
 	const [searchTracks, setSearchTracks] = useState([]);
 	const [searchArtists, setSearchArtists] = useState([]);
@@ -67,4 +67,4 @@ const SearchedTerm = () => {
 	);
 };
 
-export default SearchedTerm;
+export default SearchResults;
