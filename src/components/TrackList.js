@@ -1,9 +1,14 @@
-import React, {useState, useRef} from 'react';
+import React, {useState, useEffect, useRef} from 'react';
 
 const TrackList = ({tracks, term}) => {	
 	const [itemsToShow, setItemsToShow] = useState(5);
 	const [expanded, isExpanded] = useState(false);
 	const trackListRef = useRef();
+
+	useEffect(() => {
+		setItemsToShow(5);
+		isExpanded(false);
+	}, [term]);
 
 	const renderTracks = tracks.slice(0, itemsToShow).map(track => {
 		const {name, id, external_urls, album, duration_ms, artists} = track;

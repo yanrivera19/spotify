@@ -1,9 +1,14 @@
-import React, {useState, useRef} from 'react';
+import React, {useState, useEffect, useRef} from 'react';
 
 const ArtistList = ({artists, term}) => {
 	const [itemsToShow, setItemsToShow] = useState(5);
 	const [expanded, isExpanded] = useState(false);
 	const artistListRef = useRef();
+
+	useEffect(() => {
+		setItemsToShow(5);
+		isExpanded(false);
+	}, [term]);
 	
 	const renderArtists = artists.slice(0, itemsToShow).map(artist => {
 		const {name, images, external_urls, id} = artist;

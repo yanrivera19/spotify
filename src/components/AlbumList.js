@@ -1,10 +1,15 @@
-import React, {useState, useRef} from 'react';
+import React, {useState, useEffect, useRef} from 'react';
 
 const AlbumList = ({albums, term}) => {
 	const [itemsToShow, setItemsToShow] = useState(5);
 	const [expanded, isExpanded] = useState(false);
 	const albumListRef = useRef();
 	
+	useEffect(() => {
+		setItemsToShow(5);
+		isExpanded(false);
+	}, [term]);
+
 	const renderAlbums = albums.slice(0, itemsToShow).map(album => {
 		const {name, images, external_urls, id, artists} = album;
 		console.log(images)
