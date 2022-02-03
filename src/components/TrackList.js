@@ -17,7 +17,6 @@ const TrackList = ({tracks, term}) => {
 
 		return (
 			<a className="item track-item" key={id} href={external_urls.spotify} target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none'}}>
-			
 				<div className="right floated content">
 					<div className="duration" style={{color:'whiteSmoke', paddingRight: '15px', paddingTop: '8px'}}>{msToMinutesAndSeconds(duration_ms)}</div>
 				</div>
@@ -25,8 +24,7 @@ const TrackList = ({tracks, term}) => {
 				<div className="content">
 					<div className="header track-name truncated" style={{color:'whiteSmoke'}}>{name}</div>
 					<p className="description track-artist" style={{color:'whiteSmoke'}}>{artists[0].name}</p>
-				</div>
-		
+				</div>		
 			</a>
 		);
 	});
@@ -55,11 +53,9 @@ const TrackList = ({tracks, term}) => {
 				</button>
 				<div className="songs-header" style={{fontSize: '21px', fontWeight: 'bold'}}>Songs</div>
 			</div>
-			{/* <div className="flex"> */}
 			<div className="ui large divided animated list">
 				{renderTracks}
 			</div>
-			{/* </div> */}
 			{expanded ? (
 				<div style={{paddingBottom: '40px'}}>
 					<button className="ui right floated compact button see-btn" onClick={showLess}>SEE LESS</button>
