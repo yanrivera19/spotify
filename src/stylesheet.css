@@ -88,7 +88,7 @@ body {
 		font-size: 13px !important
 	}
 
-	.truncated {
+	.truncated, .track-artist {
 		max-width: 190px;
 	    display: block;
 	    white-space: nowrap;
@@ -98,13 +98,16 @@ body {
 }
 
 @media only screen and (max-width: 358px) {
-	.truncated {
-		font-size: 13px;
+	.truncated, .track-artist  {
 		max-width: 160px;
 	    display: block;
 	    white-space: nowrap; 
 	    overflow: hidden;
 	    text-overflow: ellipsis;
+	}
+
+	.track-name {		
+		font-size: 13px;
 	}
 
 	.term-input {

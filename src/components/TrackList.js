@@ -24,7 +24,7 @@ const TrackList = ({tracks, term}) => {
 				<img className="ui avatar image" alt="track" src={album.images[0].url}/>
 				<div className="content">
 					<div className="header track-name truncated" style={{color:'whiteSmoke'}}>{name}</div>
-					<p className="description" style={{color:'whiteSmoke'}}>{artists[0].name}</p>
+					<p className="description track-artist" style={{color:'whiteSmoke'}}>{artists[0].name}</p>
 				</div>
 		
 			</a>
