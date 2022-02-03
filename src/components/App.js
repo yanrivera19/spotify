@@ -6,12 +6,14 @@ import Header from './Header';
 
 const App = () => {
     return (
-        <div className="ui container" style={{paddingTop: '30px', paddingBottom: '50px'}}>
+        <div style={{paddingTop: '30px', paddingBottom: '50px'}}>
             <Header/>
-            <Routes>
-                <Route path={'/'} element={<HomePage/>}/>
-                <Route path={'/:searchTerm'} element={<SearchResults/>}/>
-            </Routes>
+            <div className="app ui container" >                
+                <Routes>
+                    <Route path={'/'} element={<HomePage/>}/>
+                    <Route path={'/:searchTerm'} element={<SearchResults/>}/>
+                </Routes>
+            </div>
         </div>
     );
 };

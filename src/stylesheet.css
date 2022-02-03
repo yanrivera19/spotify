@@ -3,6 +3,10 @@ body {
 	color: whitesmoke;
 }
 
+.logo {
+	padding-left: 20px;
+}
+
 .term-form {
 	margin: auto !important;
 	width: 85%;
@@ -25,6 +29,10 @@ body {
 }
 
 @media only screen and (min-width: 992px) {
+	.logo {
+		padding-left: 50px; 
+	}
+
 	.term-form {
 		width: 35% !important;
 	}
@@ -48,10 +56,17 @@ body {
 	.track-name  {
 		font-size: 18px;
 	}
-
 }
 
 @media only screen and (min-width: 601px) and (max-width: 991px) {
+	.logo {
+		padding-left: 50px; 
+	}
+	
+	.term-form {
+		width: 50% !important;
+	}
+
 	.truncated {
 		max-width: 430px;
 	    display: block;
