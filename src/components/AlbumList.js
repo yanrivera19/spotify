@@ -31,21 +31,26 @@ const AlbumList = ({albums, term}) => {
 		);
 	});
 
-	const showMore = () => {
+	const showMoreOrLess = () => {
 		if (itemsToShow === 5) {
 			setItemsToShow(albums.length)
 			isExpanded(true)
 		} else {
 			setItemsToShow(5);
 			isExpanded(false)
-			albumListRef.current.scrollIntoView({behavior: "smooth" });
 		}
+	};
+
+	const showLess = () => {
+		setItemsToShow(5);
+		isExpanded(false);	
+		albumListRef.current.scrollIntoView({behavior: "smooth" });
 	};
 
 	return (
 		<div >
 			<div className="art-hd" style={{paddingBottom: '40px'}} ref={albumListRef}>
-				<button className="ui right floated compact button" onClick={showMore}>
+				<button className="ui right floated compact button" onClick={showMoreOrLess}>
 				  {expanded ? "SEE LESS" : "SEE MORE"}
 				</button>
 				<div className="artist-header" style={{fontSize: '21px', fontWeight: 'bold'}}>Albums</div>
@@ -55,7 +60,7 @@ const AlbumList = ({albums, term}) => {
 			</div>
 			{expanded ? (
 				<div style={{paddingBottom: '40px', paddingTop: '20px'}}>
-					<button className="ui right floated compact button" onClick={showMore}>SEE LESS</button>
+					<button className="ui right floated compact button" onClick={showLess}>SEE LESS</button>
 				</div>
 			) : null}
 		</div>
