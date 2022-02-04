@@ -5,7 +5,6 @@ import {getToken} from '../token';
 import {useNavigate} from 'react-router-dom';
 
 const HomePage = () => {
-	const [term, setTerm] = useState('');
 	const navigate = useNavigate();
 	const spotifyApi = new SpotifyWebApi();
 
@@ -14,15 +13,11 @@ const HomePage = () => {
 	}, []);
 
 	const onSubmit = formValues => {
-		setTerm(formValues);
 		getToken();
 
 		spotifyApi.search(formValues, ['track','album','artist'], {limit: 50}).then(
 			function (data) {
-		    	localStorage.setItem("track", JSON.stringify(data.tracks.items))
-		    	localStorage.setItem("artist", JSON.stringify(data.artists.items))
-		    	localStorage.setItem("album", JSON.stringify(data.albums.items))
-		    	navigate(`/${formValues}`)
+		    	navigate(`/${formValues}`, {state: {tracks: data.tracks.items, artists: data.artists.items, albums: data.albums.items}}) 
 		  	},
 		  	function (err) {
 		    	console.error(err);
@@ -36,7 +31,7 @@ const HomePage = () => {
 				<h1 className="home-title" style={{fontSize: '65px'}}>Welcome</h1>
 			</div>			
 			<div className="search-home">
-				<SearchForm initialValues={{term: term}} onSubmit={onSubmit}/>
+				<SearchForm onSubmit={onSubmit}/>
 			</div>			
 		</div>
 	);

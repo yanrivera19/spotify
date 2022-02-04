@@ -12,7 +12,7 @@ const AlbumList = ({albums, term}) => {
 
 	const renderAlbums = albums.slice(0, itemsToShow).map(album => {
 		const {name, images, external_urls, id, artists} = album;
-		console.log(images)
+
 		return (
 			<a className="card" key={id} href={external_urls.spotify} target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', backgroundColor: 'black'}}>
 				<div className="image">

@@ -9,7 +9,7 @@ const SearchForm = (props) => {
   			<div className="field term-form" style={{paddingBottom: '10px'}}>
       			<div className="ui left icon input term-input" >
       				<i className="search icon"></i>
-        			<input {...input} id="termInput" autoFocus={autofocus}  className="term-input" placeholder="Search for songs, artists, or albums" autoComplete="off" style={{fontSize: '17px'}}/>
+        			<input {...input} id="termInput" autoFocus={autofocus} className="term-input" placeholder="Search for songs, artists, or albums" autoComplete="off" style={{fontSize: '17px'}}/>
         		</div>
   			</div>
 		);
@@ -23,9 +23,6 @@ const SearchForm = (props) => {
 	    	form.reset();
 
 	    	let term;
-	    	let track;
-	    	let artist;
-	    	let album;
 
 	    	if (localStorage.getItem("term") === null) {
 	    		term = [];
@@ -35,22 +32,7 @@ const SearchForm = (props) => {
 
 	    	term.splice(0, 1, formValues.term);
 	    	localStorage.setItem("term", JSON.stringify(term));
-
-	    	if (localStorage.getItem("track") === null) {
-	    		track = [];
-	    	}
-	    	localStorage.setItem("track", JSON.stringify(track))
-
-	    	if (localStorage.getItem("artist") === null) {
-	    		artist = [];
-	    	}
-	    	localStorage.setItem("artist", JSON.stringify(artist))
-
-	    	if (localStorage.getItem("album") === null) {
-	    		album = [];
-	    	}
-	    	localStorage.setItem("album", JSON.stringify(album))
-    	}
+	    }
   	};
  
   	return (

@@ -5,25 +5,28 @@ import ArtistList from './ArtistList';
 import SearchForm from './SearchForm';
 import AlbumList from './AlbumList';
 import {getToken} from '../token';
+import {useLocation, useNavigate} from 'react-router-dom';
 
 const SearchResults = () => {
-	const [searchTerm, setSearchTerm] = useState('');
+	const [searchedTerm, setSearchedTerm] = useState('');
 	const [searchTracks, setSearchTracks] = useState([]);
 	const [searchArtists, setSearchArtists] = useState([]);
 	const [searchAlbums, setSearchAlbums] = useState([]);
+	const location = useLocation();
+	const navigate = useNavigate();
 	const spotifyApi = new SpotifyWebApi();
 
 	useEffect(() => {
 		getToken();
 		
-		setSearchTerm(JSON.parse(localStorage.getItem("term")));
-		setSearchTracks(JSON.parse(localStorage.getItem("track")));
-		setSearchArtists(JSON.parse(localStorage.getItem("artist")));
-		setSearchAlbums(JSON.parse(localStorage.getItem("album")));
+		setSearchedTerm(JSON.parse(localStorage.getItem("term")));
+		setSearchTracks(location.state.tracks);
+		setSearchArtists(location.state.artists);
+		setSearchAlbums(location.state.albums);
 	}, []);
 
 	const onSubmit = formValues => {
-		setSearchTerm(formValues);
+		setSearchedTerm(formValues);
 		getToken();
 
 		spotifyApi.search(formValues, ['track','album','artist'], {limit: 50}).then(
@@ -32,9 +35,7 @@ const SearchResults = () => {
 		    	setSearchTracks(data.tracks.items);
 		    	setSearchArtists(data.artists.items);
 		    	setSearchAlbums(data.albums.items);
-		    	localStorage.setItem("track", JSON.stringify(data.tracks.items))
-		    	localStorage.setItem("artist", JSON.stringify(data.artists.items))
-		    	localStorage.setItem("album", JSON.stringify(data.albums.items))
+		    	navigate(`/${formValues}`, {state: {tracks: data.tracks.items, artists: data.artists.items, albums: data.albums.items}}) 
 		  	},
 		  	function (err) {
 		    	console.error(err);
@@ -45,19 +46,19 @@ const SearchResults = () => {
 	return (
 		<div>
 			<div style={{paddingTop: '20px'}}>
-				<SearchForm initialValues={{term: searchTerm}} onSubmit={onSubmit}/>
+				<SearchForm initialValues={{term: searchedTerm}} onSubmit={onSubmit}/>
 			</div>
 			{searchTracks.length > 0 ? (
 				<>
-					<h2 className="results-header" style={{paddingBottom: '20px', textAlign: 'center'}}>Results for <span style={{fontStyle: 'italic'}}>{searchTerm}</span>:</h2>
+					<h2 className="results-header" style={{paddingBottom: '20px', textAlign: 'center'}}>Results for <span style={{fontStyle: 'italic'}}>{searchedTerm}</span>:</h2>
 					<div className="ui inverted segment " style={{marginBottom: '30px'}}>
-						<TrackList tracks={searchTracks} term={searchTerm}/>
+						<TrackList tracks={searchTracks} term={searchedTerm}/>
 					</div>		
 					<div className="ui inverted segment" style={{marginBottom: '30px'}}>
-						<ArtistList artists={searchArtists} term={searchTerm}/>
+						<ArtistList artists={searchArtists} term={searchedTerm}/>
 					</div>
 					<div className="ui inverted segment" style={{marginBottom: '30px'}}>
-						<AlbumList albums={searchAlbums} term={searchTerm}/>
+						<AlbumList albums={searchAlbums} term={searchedTerm}/>
 					</div>
 				</>
 			) : (
