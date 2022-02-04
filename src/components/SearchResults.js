@@ -31,7 +31,6 @@ const SearchResults = () => {
 
 		spotifyApi.search(formValues, ['track','album','artist'], {limit: 50}).then(
 			function (data) {
-		    	console.log(`Search by ${formValues}`, data);
 		    	setSearchTracks(data.tracks.items);
 		    	setSearchArtists(data.artists.items);
 		    	setSearchAlbums(data.albums.items);

@@ -13,7 +13,6 @@ export const getToken = () => {
 		},
 		data: 'grant_type=client_credentials'
 	}).then(response => {
-		console.log(response.data.access_token);
 		spotifyApi.setAccessToken(response.data.access_token)
 	}).catch(error => console.log(error));
 };	
