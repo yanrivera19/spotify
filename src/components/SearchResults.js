@@ -8,7 +8,7 @@ import {getToken} from '../token';
 import {useLocation, useNavigate} from 'react-router-dom';
 
 const SearchResults = () => {
-	const [searchedTerm, setSearchedTerm] = useState('');
+	const [searchTerm, setSearchTerm] = useState('');
 	const [searchTracks, setSearchTracks] = useState([]);
 	const [searchArtists, setSearchArtists] = useState([]);
 	const [searchAlbums, setSearchAlbums] = useState([]);
@@ -19,14 +19,14 @@ const SearchResults = () => {
 	useEffect(() => {
 		getToken();
 		
-		setSearchedTerm(JSON.parse(localStorage.getItem("term")));
+		setSearchTerm(JSON.parse(localStorage.getItem("term")));
 		setSearchTracks(location.state.tracks);
 		setSearchArtists(location.state.artists);
 		setSearchAlbums(location.state.albums);
 	}, []);
 
 	const onSubmit = formValues => {
-		setSearchedTerm(formValues);
+		setSearchTerm(formValues);
 		getToken();
 
 		spotifyApi.search(formValues, ['track','album','artist'], {limit: 50}).then(
@@ -46,19 +46,19 @@ const SearchResults = () => {
 	return (
 		<div>
 			<div style={{paddingTop: '20px'}}>
-				<SearchForm initialValues={{term: searchedTerm}} onSubmit={onSubmit}/>
+				<SearchForm initialValues={{term: searchTerm}} onSubmit={onSubmit}/>
 			</div>
 			{searchTracks.length > 0 ? (
 				<>
-					<h2 className="results-header" style={{paddingBottom: '20px', textAlign: 'center'}}>Results for <span style={{fontStyle: 'italic'}}>{searchedTerm}</span>:</h2>
+					<h2 className="results-header" style={{paddingBottom: '20px', textAlign: 'center'}}>Results for <span style={{fontStyle: 'italic'}}>{searchTerm}</span>:</h2>
 					<div className="ui inverted segment " style={{marginBottom: '30px'}}>
-						<TrackList tracks={searchTracks} term={searchedTerm}/>
+						<TrackList tracks={searchTracks} term={searchTerm}/>
 					</div>		
 					<div className="ui inverted segment" style={{marginBottom: '30px'}}>
-						<ArtistList artists={searchArtists} term={searchedTerm}/>
+						<ArtistList artists={searchArtists} term={searchTerm}/>
 					</div>
 					<div className="ui inverted segment" style={{marginBottom: '30px'}}>
-						<AlbumList albums={searchAlbums} term={searchedTerm}/>
+						<AlbumList albums={searchAlbums} term={searchTerm}/>
 					</div>
 				</>
 			) : (
