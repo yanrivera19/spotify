@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useEffect} from 'react';
 import SpotifyWebApi from "spotify-web-api-js"
 import SearchForm from './SearchForm';
 import {getToken} from '../token';

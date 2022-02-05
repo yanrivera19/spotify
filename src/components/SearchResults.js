@@ -23,7 +23,7 @@ const SearchResults = () => {
 		setSearchTracks(location.state.tracks);
 		setSearchArtists(location.state.artists);
 		setSearchAlbums(location.state.albums);
-	}, []);
+	}, [location.state.tracks, location.state.artists, location.state.albums]);
 
 	const onSubmit = formValues => {
 		setSearchTerm(formValues);
