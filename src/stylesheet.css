@@ -12,7 +12,7 @@ body {
 	width: 85%;
 }
 
-.term-input {	
+.term-input {
 	border-radius: 50px !important;
 }
 
@@ -25,70 +25,74 @@ body {
 }
 
 .track-item:hover {
-	background-color:black !important
+	background-color: black !important;
+}
+
+.with-search {
+	padding-top: 20px;
 }
 
 @media only screen and (min-width: 992px) {
 	.logo {
-		padding-left: 50px; 
+		padding-left: 50px;
 	}
 
 	.term-form {
-		width: 35% !important;
+		width: 40% !important;
 	}
 
 	.home-title {
-		font-size: 80px !important;
-	}
-
-	.term-input {
-		font-size: 19px !important
+		font-size: 90px !important;
 	}
 
 	.results-header {
 		font-size: 28px;
 	}
-	
+
 	.description {
 		font-size: 15px;
 	}
 
-	.track-name  {
+	.track-name {
 		font-size: 18px;
 	}
 }
 
 @media only screen and (min-width: 601px) and (max-width: 991px) {
 	.logo {
-		padding-left: 50px; 
+		padding-left: 50px;
 	}
-	
+
 	.term-form {
-		width: 50% !important;
+		width: 70% !important;
 	}
 
 	.truncated {
 		max-width: 430px;
-	    display: block;
-	    white-space: nowrap; 
-	    overflow: hidden;
-	    text-overflow: ellipsis;
+		display: block;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
 	}
 }
 
 @media only screen and (min-width: 420px) and (max-width: 600px) {
 	.truncated {
 		max-width: 250px;
-	    display: block;
-	    white-space: nowrap; 
-	    overflow: hidden;
-	    text-overflow: ellipsis;
+		display: block;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
 	}
-}	
+
+	.term-input {
+		font-size: 17px !important;
+	}
+}
 
 @media only screen and (max-width: 419px) {
 	.term-input {
-		font-size: 15px !important
+		font-size: 15px !important;
 	}
 
 	.results-header {
@@ -100,49 +104,53 @@ body {
 	}
 
 	.see-btn {
-		font-size: 13px !important
+		font-size: 13px !important;
 	}
 
-	.truncated, .track-artist {
+	.truncated,
+	.track-artist {
 		max-width: 190px;
-	    display: block;
-	    white-space: nowrap;
-	    overflow: hidden;
-	    text-overflow: ellipsis;
+		display: block;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
 	}
 }
 
 @media only screen and (max-width: 358px) {
-	.truncated, .track-artist  {
+	.truncated,
+	.track-artist {
 		max-width: 160px;
-	    display: block;
-	    white-space: nowrap; 
-	    overflow: hidden;
-	    text-overflow: ellipsis;
+		display: block;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
 	}
 
-	.track-name {		
+	.track-name {
 		font-size: 13px;
 	}
 
 	.term-input {
-		font-size: 13px !important
+		font-size: 13px !important;
 	}
 
 	.results-header {
 		font-size: 18px;
 	}
 
-	.songs-header, .artist-header, .album-header {
+	.songs-header,
+	.artist-header,
+	.album-header {
 		font-size: 17px !important;
 	}
 
-	.see-btn, .duration {
-		font-size: 12px !important
+	.see-btn,
+	.duration {
+		font-size: 12px !important;
 	}
 
 	.description {
 		font-size: 13px;
 	}
 }
-

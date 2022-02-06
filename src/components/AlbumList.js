@@ -1,70 +1,103 @@
-import React, {useState, useEffect, useRef} from 'react';
+import React, { useState, useEffect, useRef } from "react";
 
-const AlbumList = ({albums, term}) => {
+const AlbumList = ({ albums, term }) => {
 	const [itemsToShow, setItemsToShow] = useState(5);
 	const [expanded, isExpanded] = useState(false);
 	const albumListRef = useRef();
-	
+
 	useEffect(() => {
 		setItemsToShow(5);
 		isExpanded(false);
 	}, [term]);
 
-	const renderAlbums = albums.slice(0, itemsToShow).map(album => {
-		const {name, images, external_urls, id, artists} = album;
+	const renderAlbums = albums.slice(0, itemsToShow).map((album) => {
+		const { name, images, external_urls, id, artists } = album;
 
 		return (
-			<a className="card" key={id} href={external_urls.spotify} target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', backgroundColor: 'black'}}>
+			<a
+				className="card"
+				key={id}
+				href={external_urls.spotify}
+				target="_blank"
+				rel="noopener noreferrer"
+				style={{ textDecoration: "none", backgroundColor: "black" }}
+			>
 				<div className="image">
 					{images.length > 0 ? (
-						<img className="album-img" alt="album" src={images[0].url} style={{maxHeight: '220px'}}/>
+						<img
+							className="album-img"
+							alt="album"
+							src={images[0].url}
+							style={{ maxHeight: "220px" }}
+						/>
 					) : (
-						<img src="https://img.icons8.com/color/344/no-image.png" alt="no-img"/>
-						)
-					}
+						<img
+							src="https://img.icons8.com/color/344/no-image.png"
+							alt="no-img"
+						/>
+					)}
 				</div>
 				<div className="content">
-					<div className="header" style={{color: 'whiteSmoke'}}>{name}</div>
-					<p className="description" style={{color: 'whiteSmoke'}}>{artists[0].name}</p>
+					<div className="header" style={{ color: "whiteSmoke" }}>
+						{name}
+					</div>
+					<p className="description" style={{ color: "whiteSmoke" }}>
+						{artists[0].name}
+					</p>
 				</div>
-			</a>			
+			</a>
 		);
 	});
 
 	const showMoreOrLess = () => {
 		if (itemsToShow === 5) {
-			setItemsToShow(albums.length)
-			isExpanded(true)
+			setItemsToShow(albums.length);
+			isExpanded(true);
 		} else {
 			setItemsToShow(5);
-			isExpanded(false)
+			isExpanded(false);
 		}
 	};
 
 	const showLess = () => {
 		setItemsToShow(5);
-		isExpanded(false);	
-		albumListRef.current.scrollIntoView({behavior: "smooth" });
+		isExpanded(false);
+		albumListRef.current.scrollIntoView({ behavior: "smooth" });
 	};
 
 	return (
-		<div >
-			<div className="art-hd" style={{paddingBottom: '40px'}} ref={albumListRef}>
-				<button className="ui right floated compact button" onClick={showMoreOrLess}>
-				  {expanded ? "SEE LESS" : "SEE MORE"}
+		<div>
+			<div
+				className="art-hd"
+				style={{ paddingBottom: "40px" }}
+				ref={albumListRef}
+			>
+				<button
+					className="ui right floated compact button"
+					onClick={showMoreOrLess}
+				>
+					{expanded ? "SEE LESS" : "SEE MORE"}
 				</button>
-				<div className="artist-header" style={{fontSize: '21px', fontWeight: 'bold'}}>Albums</div>
-			</div>		
-			<div className="ui doubling five cards">
-				{renderAlbums}
+				<div
+					className="artist-header"
+					style={{ fontSize: "21px", fontWeight: "bold" }}
+				>
+					Albums
+				</div>
 			</div>
+			<div className="ui doubling five cards">{renderAlbums}</div>
 			{expanded ? (
-				<div style={{paddingBottom: '40px', paddingTop: '20px'}}>
-					<button className="ui right floated compact button" onClick={showLess}>SEE LESS</button>
+				<div style={{ paddingBottom: "40px", paddingTop: "20px" }}>
+					<button
+						className="ui right floated compact button"
+						onClick={showLess}
+					>
+						SEE LESS
+					</button>
 				</div>
 			) : null}
 		</div>
 	);
-};	
+};
 
 export default AlbumList;
