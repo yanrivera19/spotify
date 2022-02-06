@@ -1,8 +1,7 @@
-import React, { useEffect } from "react";
+import React from "react";
 import TrackList from "./TrackList";
 import ArtistList from "./ArtistList";
 import AlbumList from "./AlbumList";
-import { getToken } from "../token";
 
 const SearchResults = ({ tracks, artists, albums }) => {
 	return (
