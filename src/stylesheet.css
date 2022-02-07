@@ -85,13 +85,15 @@ body {
 		text-overflow: ellipsis;
 	}
 
-	.term-input {
+	.term-input,
+	.search-icon {
 		font-size: 17px !important;
 	}
 }
 
 @media only screen and (max-width: 419px) {
-	.term-input {
+	.term-input,
+	.search-icon {
 		font-size: 15px !important;
 	}
 
@@ -131,7 +133,8 @@ body {
 		font-size: 13px;
 	}
 
-	.term-input {
+	.term-input,
+	.search-icon {
 		font-size: 13px !important;
 	}
 

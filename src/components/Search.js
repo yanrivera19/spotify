@@ -23,8 +23,11 @@ const Search = () => {
 					className="field term-form"
 					style={{ paddingBottom: "10px" }}
 				>
-					<div className="ui left icon input">
-						<i className="search icon"></i>
+					<div
+						className="ui left icon input"
+						style={{ fontSize: "19px" }}
+					>
+						<i className="search icon search-icon"></i>
 						<input
 							className="term-input"
 							value={term}
@@ -33,7 +36,6 @@ const Search = () => {
 							autoComplete="off"
 							placeholder="Search for songs, artists, or albums"
 							onChange={(e) => setTerm(e.target.value)}
-							style={{ fontSize: "19px" }}
 						/>
 					</div>
 				</div>
