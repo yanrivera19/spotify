@@ -9,7 +9,6 @@ const Search = () => {
 	const [tracks, setTracks] = useState([]);
 	const [artists, setArtists] = useState([]);
 	const [albums, setAlbums] = useState([]);
-	const [isResultsFound, setIsResultsFound] = useState();
 	const spotifyApi = new SpotifyWebApi();
 
 	useEffect(() => {
@@ -67,12 +66,6 @@ const Search = () => {
 				);
 		}
 
-		if (tracks && artists && albums) {
-			setIsResultsFound(true);
-		} else {
-			setIsResultsFound(false);
-		}
-
 		setTerm("");
 	};
 
@@ -94,7 +87,7 @@ const Search = () => {
 			<div className={searchedTerm ? "with-search" : "no-search"}>
 				{renderInput()}
 			</div>
-			{isResultsFound && searchedTerm ? (
+			{tracks.length > 0 && searchedTerm ? (
 				<>
 					<h2
 						className="results-header"
@@ -112,8 +105,14 @@ const Search = () => {
 						albums={albums}
 					/>
 				</>
-			) : !isResultsFound && searchedTerm ? (
-				<h3 style={{ fontSize: "17px" }}>
+			) : tracks.length === 0 && searchedTerm ? (
+				<h3
+					className="results-header"
+					style={{
+						textAlign: "center",
+						paddingBottom: "40px",
+					}}
+				>
 					Sorry, no results were found.
 				</h3>
 			) : null}
