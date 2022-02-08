@@ -9,7 +9,7 @@ body {
 
 .term-form {
 	margin: auto !important;
-	width: 85%;
+	width: 87%;
 }
 
 .term-input {
@@ -32,17 +32,17 @@ body {
 	padding-top: 20px;
 }
 
+.home-title {
+	font-size: clamp(3rem, 11vw, 5.9rem);
+}
+
 @media only screen and (min-width: 992px) {
 	.logo {
 		padding-left: 50px;
 	}
 
 	.term-form {
-		width: 40% !important;
-	}
-
-	.home-title {
-		font-size: 90px !important;
+		width: 45% !important;
 	}
 
 	.results-header {
@@ -64,7 +64,12 @@ body {
 	}
 
 	.term-form {
-		width: 70% !important;
+		width: 60% !important;
+	}
+
+	.term-input,
+	.search-icon {
+		font-size: 18px !important;
 	}
 
 	.truncated {
@@ -87,14 +92,18 @@ body {
 
 	.term-input,
 	.search-icon {
-		font-size: 17px !important;
+		font-size: 16px !important;
+	}
+
+	.term-form {
+		width: 80% !important;
 	}
 }
 
 @media only screen and (max-width: 419px) {
 	.term-input,
 	.search-icon {
-		font-size: 15px !important;
+		font-size: 14px !important;
 	}
 
 	.results-header {

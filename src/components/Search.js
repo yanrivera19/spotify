@@ -79,9 +79,7 @@ const Search = () => {
 						textAlign: "center",
 					}}
 				>
-					<h1 className="home-title" style={{ fontSize: "65px" }}>
-						Welcome
-					</h1>
+					<h1 className="home-title">Welcome</h1>
 				</div>
 			) : null}
 			<div className={searchedTerm ? "with-search" : "no-search"}>
