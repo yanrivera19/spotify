@@ -23,7 +23,7 @@ Each section has a _SEE MORE_ button on display, and a _SEE LESS_ button hidden.
 
 ## Quick Start
 
-1. If you wish to download and run the application locally, first go to [https://developer.spotify.com/dashboard/] and create your Spotify App account (if you currently have one, log in to it) in order to retrieve your Access Token, Client Id and Client Secret.
+1. If you wish to download and run the application locally, first go to (Spotify for Developers Dashboard)[https://developer.spotify.com/dashboard/] and create your Spotify App account (if you currently have one, log in to it) in order to retrieve your Access Token, Client Id and Client Secret.
 2. Clone the app onto your local machine, open it up and create a .env file. Enter your Client Id and Client Secret into this .env file as shown below:
 
 ```
@@ -32,5 +32,5 @@ REACT_APP_CLIENT_SECRET = your Secret Id
 ```
 
 3. In your console, select the cloned app and type in the command <code>npm install</code>.
-4. After that command is done, type in the command <code>npm start</code>. The app will then open in the browser on localhost:3000.
+4. After that command is done running, type in the command <code>npm start</code>. The app will then open in the browser on localhost:3000.
 5. If you wish to open the deployed version of the application on your browser, [click here](https://spotify-rho-azure.vercel.app/).
