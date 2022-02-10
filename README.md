@@ -23,7 +23,7 @@ Each section has a _SEE MORE_ button on display, and a _SEE LESS_ button hidden.
 
 ## Quick Start
 
-1. If you wish to download and run the application locally, first go to (https://developer.spotify.com/dashboard/)[https://developer.spotify.com/dashboard/] and create your Spotify App account (if you currently have one, log in to it) in order to retrieve your Access Token, Client Id and Client Secret.
+1. If you wish to download and run the application locally, first go to [https://developer.spotify.com/dashboard/] and create your Spotify App account (if you currently have one, log in to it) in order to retrieve your Access Token, Client Id and Client Secret.
 2. Clone the app onto your local machine, open it up and create a .env file. Enter your Client Id and Client Secret into this .env file as shown below:
 
 ```
