@@ -49,6 +49,8 @@ const AlbumList = ({ albums, term }) => {
 		);
 	});
 
+	//This function is used to deal with the 'SEE MORE' and 'SEE LESS' buttons at the top of the lists:
+
 	const showMoreOrLess = () => {
 		if (itemsToShow === 5) {
 			setItemsToShow(albums.length);
@@ -58,6 +60,8 @@ const AlbumList = ({ albums, term }) => {
 			isExpanded(false);
 		}
 	};
+
+	//This function is used to deal with the 'SEE LESS' buttons at the bottom of the lists when they are expanded:
 
 	const showLess = () => {
 		setItemsToShow(5);

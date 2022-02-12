@@ -1,4 +1,4 @@
-# Spotify (clone)
+# Spotify App
 
 This is a [Spotify](https://open.spotify.com) clone. On the app you can search for songs/tracks, artists, and albums that match whatever term you submit on the search bar.
 
