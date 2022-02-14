@@ -1,6 +1,6 @@
 # Spotify App
 
-This is a [Spotify](https://open.spotify.com) clone. On the app you can search for songs/tracks, artists, and albums that match whatever term you submit on the search bar.
+This is a [Spotify](https://open.spotify.com) clone app. On the app you can search for songs/tracks, artists, and albums that match whatever term you submit on the search bar.
 
 When you select a song, artist, or album, it will be opened on the Spotify website on a new tab. The data displayed was obtained using the [Spotify Web API](https://developer.spotify.com/documentation/web-api/).
 
