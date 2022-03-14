@@ -82,7 +82,7 @@ const Search = () => {
 					<h1 className="home-title">Welcome</h1>
 				</div>
 			) : null}
-			<div className={searchedTerm ? "with-search" : "no-search"}>
+			<div className={searchedTerm ? "with-results" : "no-results"}>
 				{renderInput()}
 			</div>
 			{tracks.length > 0 && searchedTerm ? (
@@ -101,6 +101,7 @@ const Search = () => {
 						tracks={tracks}
 						artists={artists}
 						albums={albums}
+						term={searchedTerm}
 					/>
 				</>
 			) : tracks.length === 0 && searchedTerm ? (
