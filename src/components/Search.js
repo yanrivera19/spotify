@@ -26,7 +26,10 @@ const Search = () => {
 						className="ui left icon input"
 						style={{ fontSize: "19px" }}
 					>
-						<i className="search icon search-icon"></i>
+						<i
+							className="search icon search-icon"
+							style={{ marginRight: "30%" }}
+						></i>
 						<input
 							className="term-input"
 							value={term}
@@ -74,7 +77,7 @@ const Search = () => {
 			{!searchedTerm ? (
 				<div
 					style={{
-						marginTop: "130px",
+						marginTop: "110px",
 						paddingBottom: "40px",
 						textAlign: "center",
 					}}
