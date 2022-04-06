@@ -50,6 +50,10 @@ body {
 	padding-top: 20px;
 }
 
+.button, .term-input {
+	box-shadow: 0 0px 10px white !important;
+}
+
 .home-title {
 	font-size: clamp(3rem, 11vw, 5.9rem);
 }
