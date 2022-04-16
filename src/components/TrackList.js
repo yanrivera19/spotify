@@ -10,15 +10,15 @@ const TrackList = ({ tracks, term }) => {
 		isExpanded(false);
 	}, [term]);
 
+	const msToMinutesAndSeconds = (ms) => {
+		const minutes = Math.floor(ms / 60000);
+		const seconds = ((ms % 60000) / 1000).toFixed(0);
+
+		return minutes + ":" + (seconds < 10 ? "0" : "") + seconds;
+	};
+
 	const renderTracks = tracks.slice(0, itemsToShow).map((track) => {
-		const { name, id, external_urls, album, duration_ms, artists } = track;
-
-		const msToMinutesAndSeconds = (ms) => {
-			const minutes = Math.floor(ms / 60000);
-			const seconds = ((ms % 60000) / 1000).toFixed(0);
-
-			return minutes + ":" + (seconds < 10 ? "0" : "") + seconds;
-		};
+		const { name, id, external_urls, album, duration_ms, artists } = track;		
 
 		return (
 			<a
@@ -64,7 +64,7 @@ const TrackList = ({ tracks, term }) => {
 		);
 	});
 
-	//This function is used to deal with the 'SEE MORE' and 'SEE LESS' buttons at the top of the lists:
+	//This function is used to deal with the 'SEE MORE' and 'SEE LESS' buttons:
 
 	const showMoreOrLess = () => {
 		if (itemsToShow === 5) {
@@ -73,18 +73,11 @@ const TrackList = ({ tracks, term }) => {
 		} else {
 			setItemsToShow(5);
 			isExpanded(false);
+			trackListRef.current.scrollIntoView({
+				block: "end",
+				behavior: "smooth",
+			});
 		}
-	};
-
-	//This function is used to deal with the 'SEE LESS' buttons at the bottom of the lists when they are expanded:
-
-	const showLess = () => {
-		setItemsToShow(5);
-		isExpanded(false);
-		trackListRef.current.scrollIntoView({
-			block: "end",
-			behavior: "smooth",
-		});
 	};
 
 	return (
@@ -108,7 +101,7 @@ const TrackList = ({ tracks, term }) => {
 				<div style={{ paddingBottom: "40px" }}>
 					<button
 						className="ui right floated compact button see-btn"
-						onClick={showLess}
+						onClick={showMoreOrLess}
 					>
 						SEE LESS
 					</button>

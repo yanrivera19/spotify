@@ -49,7 +49,7 @@ const AlbumList = ({ albums, term }) => {
 		);
 	});
 
-	//This function is used to deal with the 'SEE MORE' and 'SEE LESS' buttons at the top of the lists:
+	//This function is used to deal with the 'SEE MORE' and 'SEE LESS' buttons:
 
 	const showMoreOrLess = () => {
 		if (itemsToShow === 5) {
@@ -58,15 +58,8 @@ const AlbumList = ({ albums, term }) => {
 		} else {
 			setItemsToShow(5);
 			isExpanded(false);
+			albumListRef.current.scrollIntoView({ behavior: "smooth" });
 		}
-	};
-
-	//This function is used to deal with the 'SEE LESS' buttons at the bottom of the lists when they are expanded:
-
-	const showLess = () => {
-		setItemsToShow(5);
-		isExpanded(false);
-		albumListRef.current.scrollIntoView({ behavior: "smooth" });
 	};
 
 	return (
@@ -94,7 +87,7 @@ const AlbumList = ({ albums, term }) => {
 				<div style={{ paddingBottom: "40px", paddingTop: "20px" }}>
 					<button
 						className="ui right floated compact button"
-						onClick={showLess}
+						onClick={showMoreOrLess}
 					>
 						SEE LESS
 					</button>
